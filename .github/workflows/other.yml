@@ -1,0 +1,16 @@
+name: "RPL-2023-CICD Demo Other Branch"
+on:
+  push:
+    branches:
+    - !master
+jobs:
+  lint:
+    name: Lint
+    runs-on: ubuntu-latest
+    steps:
+    - name: Do python linter test check
+      run: |
+        sudo apt install python3-pip -y
+        python -m pip install pylint
+        pip install flask
+        pylint app.py --disable=C0114,C0116
